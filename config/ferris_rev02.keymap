@@ -6,7 +6,6 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
 
 #define NAV_L 1
 #define OTHER_L 2
@@ -14,6 +13,7 @@
 #define SYM_L 4
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
+
 &lt { quick-tap-ms = <200>; };
 
 / {
@@ -32,46 +32,46 @@
 
         default_layer {
             bindings = <
-                &kp Q      &kp W      &kp E       &kp R          &kp T         &kp Y            &kp U          &kp I       &kp O      &kp P
-                &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F    &kp G         &kp H            &hm RSHFT J    &hm RCTRL K &hm LALT L &hm LGUI QUOT
-                &kp Z      &kp X      &kp C       &kp V          &kp B         &kp N            &kp M          &kp COMMA   &kp DOT    &kp FSLH
-                                                  &lt NAV_L TAB  &kp ENTER     &lt NUM_L SPACE  &lt SYM_L BKSP
+&kp Z       &kp X            &lt 1 C      &lt 2 V               &kp B                      &kp N              &lt 2 M                &lt 1 COMMA  &kp DOT          &kp FSLH
+&hm LGUI A  &hm RIGHT_ALT S  &hm LCTRL D  &hm LSHFT F           &hm LEFT_ALT G             &hm LEFT_ALT H     &hm RSHFT J            &hm RCTRL K  &hm RIGHT_ALT L  &hm LGUI SEMI
+&kp Q       &kp W            &kp E        &kp R                 &kp T                      &kp Y              &kp U                  &kp I        &kp O            &kp P
+                                          &mt LEFT_SHIFT SPACE  &mt RIGHT_ALT BACKSPACE    &mt RIGHT_ALT TAB  &mt RIGHT_SHIFT ENTER
             >;
         };
 
-        nav_layer {
+        Vim {
             bindings = <
-                &trans     &trans     &trans      &trans          &trans       &trans           &trans         &trans      &trans     &trans
-                &trans     &trans     &trans      &trans          &trans       &trans           &kp LARW       &kp DARW    &kp UARW   &kp RARW
-                &trans     &trans     &trans      &trans          &trans       &trans           &kp HOME       &kp PG_DN   &kp PG_UP  &kp END
-                                                  &trans          &trans       &kp ESC          &kp DEL
+&trans  &kp K_CUT  &trans  &kp K_COPY  &kp K_PASTE    &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &trans
+&trans  &trans     &trans  &trans      &trans         &kp LEFT  &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp PRINTSCREEN
+&trans  &trans     &trans  &trans      &trans         &trans    &trans         &trans        &trans     &trans
+                           &kp ESC     &kp DELETE     &trans    &trans
             >;
         };
 
-        other_layer {
+        Numeric {
             bindings = <
-                &trans     &trans     &trans      &trans          &trans       &trans           &trans         &trans      &trans     &trans
-                &trans     &trans     &trans      &trans          &trans       &trans           &trans         &trans      &trans     &trans
-                &trans     &trans     &trans      &trans          &trans       &trans           &kp HOME       &trans      &trans     &trans
-                                                  &trans          &trans       &trans           &trans
+&trans  &kp F12  &kp F11  &trans  &trans     &trans        &trans        &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE
+&kp F1  &kp F2   &kp F3   &kp F4  &kp F5     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5
+&kp F6  &kp F7   &kp F8   &kp F9  &kp F10    &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0
+                          &trans  &trans     &trans        &trans
             >;
         };
 
         num_layer {
             bindings = <
-                &kp LBKT   &kp N7     &kp N8      &kp N9          &kp RBKT      &trans          &trans         &trans      &trans     &trans
-                &kp SEMI   &kp N4     &kp N5      &kp N6          &kp EQUAL     &trans          &trans         &trans      &trans     &trans
-                &kp GRAVE  &kp N1     &kp N2      &kp N3          &kp BSLH      &trans          &trans         &trans      &trans     &trans
-                                                  &kp N0          &kp MINUS     &trans          &trans
+&kp LBKT   &kp N7  &kp N8  &kp N9  &kp RBKT     &trans  &trans  &trans  &trans  &trans
+&kp SEMI   &kp N4  &kp N5  &kp N6  &kp EQUAL    &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp BSLH     &trans  &trans  &trans  &trans  &trans
+                           &kp N0  &kp MINUS    &trans  &trans
             >;
         };
 
         sym_layer {
             bindings = <
-                &kp LBRC     &kp LS(N7)  &kp LS(N8)  &kp LS(N9) &kp RBRC       &trans &trans   &trans    &trans    &trans
-                &kp COLON     &kp LS(N4)  &kp LS(N5)  &kp LS(N6) &kp PLUS       &trans &trans   &trans    &trans    &trans
-                &kp TILDE     &kp LS(N1)  &kp LS(N2)  &kp LS(N3) &kp LS(BSLH)       &trans &trans   &trans    &trans    &trans
-                                                   &kp LS(N0) &kp UNDER   &trans &trans
+&kp LBRC   &kp LS(N7)  &kp LS(N8)  &kp LS(N9)  &kp RBRC        &trans  &trans  &trans  &trans  &trans
+&kp COLON  &kp LS(N4)  &kp LS(N5)  &kp LS(N6)  &kp PLUS        &trans  &trans  &trans  &trans  &trans
+&kp TILDE  &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(BSLH)    &trans  &trans  &trans  &trans  &trans
+                                   &kp LS(N0)  &kp UNDER       &trans  &trans
             >;
         };
     };
